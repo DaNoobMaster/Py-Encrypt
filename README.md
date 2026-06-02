@@ -19,12 +19,23 @@ Py-Encrypt is a simple file encryption utility built with Python and `tkinter`. 
 3. The GUI allows the user to choose whether to save the active key to a local file.
 4. The user enters the path to the target file and clicks `Encrypt File` or `Decrypt File`.
 
+## Versions
+
+### Desktop Version (`main.py`)
+Traditional tkinter GUI application for local use on your computer.
+
+### Web Version (`streamlit.py`)
+Streamlit web application - deploy to the cloud and access from any browser.
+
 ## Requirements
 - Python 3.7+
 - `cryptography` Python package
-- Standard library `tkinter` for the GUI
+- `tkinter` for the desktop version (standard library)
+- `streamlit` for the web version
 
 ## Installation
+
+### Desktop Version
 1. Install Python if it is not already installed.
 2. Install the required package:
 
@@ -32,7 +43,14 @@ Py-Encrypt is a simple file encryption utility built with Python and `tkinter`. 
 pip install cryptography
 ```
 
+### Web Version (Streamlit)
+```bash
+pip install -r requirements.txt
+```
+
 ## Usage
+
+### Desktop Version (local)
 1. Place the script `main.py` in the same folder as your target files, or run it from any folder.
 2. Run the script:
 
@@ -47,6 +65,28 @@ python main.py
 - Enter the path of the file you want to encrypt or decrypt.
 - Click `Encrypt File` or `Decrypt File`.
 - Click `Clear key memory` to reset the current key in the GUI.
+
+### Web Version (Streamlit - Local)
+```bash
+streamlit run app.py
+```
+
+### Web Version (Deploy to Cloud)
+
+**Option 1: Streamlit Cloud (Recommended)**
+1. Push your code to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io/)
+3. Click "New app" and connect your GitHub repository
+4. Select the repository, branch, and set `app.py` as the main file
+5. Click Deploy
+6. Your app will be live at a URL like: `https://yourname-cryptography.streamlit.app`
+
+**Features of the web version:**
+- Upload files directly from your browser
+- Generate or paste encryption keys
+- Download encrypted/decrypted files
+- Works on any device with internet access
+- No installation required
 
 ## Notes and Warnings
 - Do not overwrite your encryption key file once it is created unless you intend to lose access to previously encrypted files.
