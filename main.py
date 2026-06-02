@@ -8,6 +8,10 @@ import hashlib
 with open('encryption_key.key', 'rb') as key_file:
     key = key_file.read()
 
+
+key=None
+fernet = Fernet(key)
+
 def convert_key(input_key):
     try:
         print(input_key)
@@ -17,7 +21,7 @@ def convert_key(input_key):
         if len(decoded) == 32:
             return input_key.encode()
         if input_key=="":
-            return None
+            return ""
 
     except Exception:
         pass
@@ -43,7 +47,7 @@ def show_check():
         key_path_entry.pack_forget()
 
 def encrypt_file(path):
-    fernet = Fernet(key)
+    print(key)
     file_path = path
     with open(file_path, 'rb') as file:
         original = file.read()
@@ -52,7 +56,6 @@ def encrypt_file(path):
         encrypted_file.write(encrypted)
 
 def decrypt_file(path):
-    fernet = Fernet(key)
     file_path = path
     with open(file_path, 'rb') as encrypted_file:
         encrypted = encrypted_file.read()
@@ -65,8 +68,12 @@ def clear():
     #key = user_key.get().encode()
 
 def key_change(var_name, index, mode):
-    key = convert_key(user_key.get())
-    print(key)
+    global fernet, key
+    new_key = convert_key(user_key.get())
+    if not new_key:
+        return
+    key = new_key
+    fernet = Fernet(key)
     if check_var.get():
         try:
             with open(str(key_path_entry.get()), 'wb') as key_file:
