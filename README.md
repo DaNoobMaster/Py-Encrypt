@@ -24,7 +24,7 @@ Py-Encrypt is a simple file encryption utility built with Python and `tkinter`. 
 ### Desktop Version (`main.py`)
 Traditional tkinter GUI application for local use on your computer.
 
-### Web Version (`streamlit.py`)
+### Web Version (`app.py`)
 Streamlit web application - deploy to the cloud and access from any browser.
 
 ## Requirements
